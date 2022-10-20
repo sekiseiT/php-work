@@ -17,12 +17,21 @@
 
   <div id="project">
 
+
     <?php 
-    $project_name = "";
-    if(isset($_GET["add_project"])) {
-      $project_name = $_GET["title"];
-    }
-    echo $project_name;
+      //内部文字エンコーディングを変更
+      mb_internal_encoding("UTF-8");
+      //外部ファイル読み込み
+      include("db_connect.php");
+      doDB();
+
+
+      $project_name = "";
+      //
+      if(isset($_GET["add_project"])) {
+        $project_name = htmlspecialchars($_GET["title"], ENT_QUOTES, "UTF-8");
+      }
+      echo $project_name;
     ?>
   </div>
 </body>
